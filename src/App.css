@@ -2721,11 +2721,7 @@ footer {
     linear-gradient(180deg, #79dfffb3 -10%, #79dfff00 70%),
     radial-gradient(circle at 95% 0, #d0f224 0, #5fd5b600 20%) !important;
 }
-.loginPage {
-  background-image: radial-gradient(circle at 0 0, #ffffff00 0, #5fd5b600 30%),
-    linear-gradient(180deg, #79dfffb3 -10%, #79dfff00 70%),
-    radial-gradient(circle at 95% 0, #d0f224 0, #5fd5b600 20%) !important;
-}
+
 .print-text {
   color: #1b9aa5;
   font-style: normal;

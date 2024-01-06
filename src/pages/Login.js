@@ -40,17 +40,17 @@ function Login() {
   return (
     <div
       className="container-scroller h100 loginPage"
-      style={{ background: "#F0F3F9" }}
+      style={{ background: "#fff" }}
     >
       {/* partial */}
       <div className="container pt-4 categoryField">
         <section className="">
           <div className="row  justify-content-center align-items-center d-flex-row text-center h-100">
-            <div className="col-12 col-md-9  ">
-              <div className="card shadow">
+            <div className="col-12 col-md-8  ">
+              <div className="card shadow" style={{ background: "#F0F2F5" }}>
                 <div className="card-body ">
-                  <div className="d-flex gap-4">
-                    <div>
+                  <div className="d-flex gap-4 row">
+                    <div className="col-md-6">
                       <img
                         src="assets/images/splash.png"
                         className="w-80 img-fluid"
@@ -100,6 +100,7 @@ function Login() {
                         >
                           <Input
                             // addonBefore={<UserOutlined />}
+                            style={{ background: "white" }}
                             placeholder="Enter Email"
                           />
                         </Form.Item>
@@ -113,9 +114,10 @@ function Login() {
                             },
                           ]}
                         >
-                          <Input.Password
+                          <Input
                             // prefix={<VerifiedUserOutlined />}
                             type="password"
+                            style={{ background: "white" }}
                             placeholder="Enter Password"
                           />
                         </Form.Item>
@@ -138,18 +140,18 @@ function Login() {
                         </Form.Item>
                       </Form>
                       <p className="text-center">
-                        New to POS ?{" "}
+                        Dont have an account ?{" "}
                         <a
                           onClick={(e) => {
                             setShowRegisterModal(true);
                           }}
                           className="text-danger"
                         >
-                          <span className="ms-1 fw-bold">Register</span>
+                          <span className="ms-1 fw-bold">Sign up</span>
                         </a>
                       </p>
                     </div>
-                    <div>
+                    <div className="col-md-5">
                       <img
                         className="w-100"
                         src="assets/images/login_image.png"
