@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import CountUp from "react-countup";
 // import CountUp from "react-countup/build/CountUp";
+import { Tag } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSkeleton from "../components/HomeSkeleton/HomeSkeleton";
 import Sidebar from "../components/Sidebar/Sidebar";
@@ -34,13 +35,17 @@ function Home() {
                   <>
                     <div className="col-md-12">
                       <div className="card height-100">
-                        <div className="card-header border-0 align-items-center d-flex">
-                          <h4 className="card-title mb-0 flex-grow-1">
-                            Statistics
-                          </h4>
-                        </div>
                         {/* end card header */}
                         <div className="card-body">
+                          <h4 className="card-title mb-0 flex-grow-1 mb-0">
+                            Today's Sales
+                          </h4>
+                          <small
+                            className="mb-1"
+                            style={{ color: "#737791", fontSize: "12px" }}
+                          >
+                            Sales Summary
+                          </small>
                           <div className="row">
                             <div className="col-md-3">
                               <div className="card card-animate c1">
@@ -295,15 +300,11 @@ function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className="col-xl-4 col-md-6">
+                    <div className="col-xl-6 col-md-6">
                       <div className="card height-100 border-0">
-                        <div className="card-header align-items-center d-flex border-0">
-                          <h4 className="card-title ">
-                            Recently Added Products
-                          </h4>
-                        </div>
                         {/* end card header */}
                         <div className="card-body">
+                          <h4 className="card-title mb-3">Sales By Category</h4>
                           <div className="table-responsive table-card card_height">
                             <table className="table table-hover  align-middle table-nowrap mb-0 ">
                               <thead className="text-muted table-light">
@@ -324,7 +325,62 @@ function Home() {
                                         <td>
                                           <a>{item.ItemName}</a>
                                         </td>
-                                        <td>Rs {item.UnitPrice}</td>
+                                        <td>
+                                          <Tag color="success">
+                                            Rs {item.UnitPrice}
+                                          </Tag>{" "}
+                                        </td>
+                                      </tr>
+                                    );
+                                  }
+                                )}
+
+                                {/* end */}
+
+                                {/* end */}
+                              </tbody>
+                              {/* end tbody */}
+                            </table>
+                            {/* end table */}
+                          </div>
+                          {/* end */}
+                        </div>
+                        {/* end cardbody */}
+                      </div>
+                      {/* end card */}
+                    </div>
+                    <div className="col-xl-6 col-md-6">
+                      <div className="card height-100 border-0">
+                        {/* end card header */}
+                        <div className="card-body">
+                          <h4 className="card-title mb-3">
+                            Recently Added Products
+                          </h4>
+                          <div className="table-responsive table-card card_height">
+                            <table className="table table-hover  align-middle table-nowrap mb-0 ">
+                              <thead className="text-muted table-light">
+                                <tr>
+                                  <th scope="col" style={{ width: 62 }}>
+                                    #
+                                  </th>
+                                  <th scope="col">Product Name</th>
+                                  <th scope="col">Price</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {dashboardData?.recentlyAddedProducts?.map(
+                                  (item, index) => {
+                                    return (
+                                      <tr key={index + 1}>
+                                        <td>{index + 1}</td>
+                                        <td>
+                                          <a>{item.ItemName}</a>
+                                        </td>
+                                        <td>
+                                          <Tag color="success">
+                                            Rs {item.UnitPrice}
+                                          </Tag>{" "}
+                                        </td>
                                       </tr>
                                     );
                                   }
