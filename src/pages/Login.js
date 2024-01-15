@@ -149,7 +149,7 @@ function Login() {
                     </div>
                     <div className="col-md-5">
                       <img
-                        className="w-100"
+                        className="w-100 d-none d-md-block"
                         src="assets/images/login_image.png"
                       />
                     </div>
