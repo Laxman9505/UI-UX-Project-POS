@@ -1,9 +1,10 @@
 /** @format */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 // import CountUp from "react-countup/build/CountUp";
 import { Tag } from "antd";
+import Chart from "react-apexcharts";
 import { useDispatch, useSelector } from "react-redux";
 import HomeSkeleton from "../components/HomeSkeleton/HomeSkeleton";
 import Sidebar from "../components/Sidebar/Sidebar";
@@ -13,6 +14,35 @@ function Home() {
   const { dashboardData, getDashboardDataLoading } = useSelector(
     (state) => state.commonReducer
   );
+  const [chartData, setChartData] = useState({
+    options: {
+      chart: {
+        id: "basic-pie",
+      },
+      labels: ["Momo", "Pizza", "Sekuwa", "PORK"],
+      colors: [
+        "#008FFB",
+        "#00E396",
+        "#FEB019",
+        "#5E3FBE",
+        "#008FFB",
+        "#00E396",
+        "#FEB019",
+        "#FF4560",
+      ],
+      legend: {
+        position: "bottom",
+      },
+      tooltip: {
+        y: {
+          formatter: function (value) {
+            return value + "O";
+          },
+        },
+      },
+    },
+    series: [10, 10, 10, 70],
+  });
 
   useEffect(() => {
     dispatch({
@@ -305,44 +335,12 @@ function Home() {
                         {/* end card header */}
                         <div className="card-body">
                           <h4 className="card-title mb-3">Sales By Category</h4>
-                          <div className="table-responsive table-card card_height">
-                            <table className="table table-hover  align-middle table-nowrap mb-0 ">
-                              <thead className="text-muted table-light">
-                                <tr>
-                                  <th scope="col" style={{ width: 62 }}>
-                                    #
-                                  </th>
-                                  <th scope="col">Product Name</th>
-                                  <th scope="col">Price</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {dashboardData?.recentlyAddedProducts?.map(
-                                  (item, index) => {
-                                    return (
-                                      <tr key={index + 1}>
-                                        <td>{index + 1}</td>
-                                        <td>
-                                          <a>{item.ItemName}</a>
-                                        </td>
-                                        <td>
-                                          <Tag color="success">
-                                            Rs {item.UnitPrice}
-                                          </Tag>{" "}
-                                        </td>
-                                      </tr>
-                                    );
-                                  }
-                                )}
-
-                                {/* end */}
-
-                                {/* end */}
-                              </tbody>
-                              {/* end tbody */}
-                            </table>
-                            {/* end table */}
-                          </div>
+                          <Chart
+                            options={chartData.options}
+                            series={chartData.series}
+                            type="pie"
+                            width={400}
+                          />
                           {/* end */}
                         </div>
                         {/* end cardbody */}
