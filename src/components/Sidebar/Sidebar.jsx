@@ -24,7 +24,7 @@ function Sidebar({ isSidebarOpen }) {
         <li className="nav-item">
           {/* <a className="nav-link" onClick={() => handleNavigation("/pos")}>
             <i className="fas fa-cash-register"></i>
-            <span className="menu-title">POS</span>
+            <s∏pan className="menu-title">POS</s∏pan>
           </a> */}
         </li>
 

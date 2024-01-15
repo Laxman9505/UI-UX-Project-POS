@@ -25,6 +25,7 @@ function App() {
   );
   const Login = React.lazy(() => import("./pages/Login"));
   const Register = React.lazy(() => import("./pages/Register"));
+  const Home = React.lazy(() => import("./pages/Home"));
 
   return (
     <Provider store={Store()}>
@@ -35,6 +36,7 @@ function App() {
             <Layout>
               <Routes>
                 <Route path="*" element={<Navigate to="/404" replace />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/404" element={<PageNotFound />} />
