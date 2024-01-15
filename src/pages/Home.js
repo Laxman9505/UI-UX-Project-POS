@@ -32,7 +32,7 @@ function Home() {
                   <HomeSkeleton />
                 ) : (
                   <>
-                    <div className="col-md-8">
+                    <div className="col-md-12">
                       <div className="card height-100">
                         <div className="card-header border-0 align-items-center d-flex">
                           <h4 className="card-title mb-0 flex-grow-1">
@@ -42,7 +42,7 @@ function Home() {
                         {/* end card header */}
                         <div className="card-body">
                           <div className="row">
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                               <div className="card card-animate c1">
                                 <div className="card-body">
                                   <div className="d-flex justify-content-between">
@@ -105,7 +105,7 @@ function Home() {
                             {/* end col*/}
 
                             {/* end col*/}
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                               <div className="card card-animate c3">
                                 <div className="card-body">
                                   <div className="d-flex justify-content-between">
@@ -170,7 +170,7 @@ function Home() {
                               </div>
                               {/* end card*/}
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                               <div className="card card-animate c2">
                                 <div className="card-body">
                                   <div className="d-flex justify-content-between">
@@ -236,7 +236,7 @@ function Home() {
                               </div>
                               {/* end card*/}
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-3">
                               <div className="card card-animate c4">
                                 <div className="card-body">
                                   <div className="d-flex justify-content-between">

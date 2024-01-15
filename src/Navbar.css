@@ -352,7 +352,7 @@
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: var(--theme-color);
+  background: white;
   width: 237px;
   height: 63px;
 }
@@ -401,7 +401,6 @@
   padding-right: 15px;
   width: calc(100% - 239px);
   height: 63px;
-  box-shadow: 0 4px 16px 0 rgba(167, 175, 183, 0.33);
 }
 
 @media (max-width: 991px) {
@@ -602,7 +601,7 @@ a#UserDropdown {
 
 .sidebar {
   min-height: calc(100vh - 63px);
-  background: var(--white-color);
+  background: #00205b;
   padding: 0;
   width: 236px;
   z-index: 11;
@@ -767,7 +766,7 @@ a#UserDropdown {
 .sidebar > .nav .nav-item .nav-link i {
   text-align: center;
   line-height: 20px;
-  font-size: 30px;
+  font-size: 38px;
   margin: auto;
   color: #fff;
   background: var(--theme-color);
@@ -822,17 +821,19 @@ a#UserDropdown {
 
 .sidebar > .nav .nav-item .nav-link .menu-title {
   margin-right: auto;
+  margin-left: 15px;
   /* overflow: hidden; */
   /* max-width: initial; */
   text-overflow: ellipsis;
   /* white-space: nowrap; */
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  margin-top: 11px;
-  color: var(--dark-color);
+  margin-top: 13px;
+  color: white;
   text-align: center;
   justify-content: center;
   align-items: center;
+  justify-content: center;
   display: flex;
 }
 
@@ -904,7 +905,7 @@ a#UserDropdown {
 }
 
 .sidebar > .nav > .nav-item > .nav-link {
-  height: 52px;
+  /* height: 52px; */
 }
 
 .sidebar > .nav > .nav-item:not(.nav-profile) > .nav-link {

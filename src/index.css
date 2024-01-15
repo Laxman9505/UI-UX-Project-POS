@@ -707,7 +707,6 @@ span {
   /* Additional styles to visually indicate disabled state */
 }
 .dashboard .card {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .reciept-wrapper {

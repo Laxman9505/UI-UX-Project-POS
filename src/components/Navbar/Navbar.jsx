@@ -1,7 +1,7 @@
 /** @format */
 
-import { LogoutOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Drawer } from "antd";
+import { LogoutOutlined } from "@ant-design/icons";
+import { Drawer } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -58,17 +58,7 @@ function Navbar() {
       </div>
 
       <div className="navbar-menu-wrapper d-flex align-items-center justify-content-between">
-        {
-          <Button
-            onClick={() => {
-              setIsSidebarOpen(true);
-            }}
-            style={{ background: "#E1045F", color: "white", border: "#E1045F" }}
-            shape="circle"
-            icon={<MenuUnfoldOutlined />}
-            size={"large"}
-          />
-        }
+        {<div />}
 
         <div className="d-flex gap-4">
           <div>
