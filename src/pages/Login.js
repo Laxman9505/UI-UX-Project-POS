@@ -3,6 +3,7 @@
 import { Alert, Button, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 function Login() {
   const dispatch = useDispatch();
   const [showRegisterModal, setShowRegisterModal] = useState(false);
@@ -47,7 +48,7 @@ function Login() {
         <section className="">
           <div className="row  justify-content-center align-items-center d-flex-row text-center h-100">
             <div className="col-12 col-md-8  ">
-              <div className="card shadow" style={{ background: "#F0F2F5" }}>
+              <div className="card" style={{ background: "#F0F2F5" }}>
                 <div className="card-body ">
                   <div className="d-flex gap-4 row">
                     <div className="col-md-6">
@@ -141,14 +142,9 @@ function Login() {
                       </Form>
                       <p className="text-center">
                         Dont have an account ?{" "}
-                        <a
-                          onClick={(e) => {
-                            setShowRegisterModal(true);
-                          }}
-                          className="text-danger"
-                        >
+                        <Link to={"/register"} className="text-danger">
                           <span className="ms-1 fw-bold">Sign up</span>
-                        </a>
+                        </Link>
                       </p>
                     </div>
                     <div className="col-md-5">
