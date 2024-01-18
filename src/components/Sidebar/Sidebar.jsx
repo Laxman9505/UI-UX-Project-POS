@@ -1,11 +1,14 @@
 /** @format */
 
+import nProgress from "nprogress";
 import React from "react";
+import Loadable from "react-loadable";
+import { useNavigate } from "react-router-dom";
 
 const Loading = () => null;
 
 function Sidebar({ isSidebarOpen }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // const OrdersLoadable = Loadable({
   //   loader: () => import("../../pages/Orders/Orders"),
@@ -17,26 +20,26 @@ function Sidebar({ isSidebarOpen }) {
   //   loading: Loading,
   // });
 
-  // const PosLoadable = Loadable({
-  //   loader: () => import("../../pages/Pos"),
-  //   loading: Loading,
-  // });
+  const PosLoadable = Loadable({
+    loader: () => import("../../pages/Pos"),
+    loading: Loading,
+  });
 
-  // const linkToComponent = {
-  //   "/orders/all": OrdersLoadable,
-  //   "/pos": PosLoadable,
-  //   "/inventory/list": InventoryLoadable,
-  // };
+  const linkToComponent = {
+    // "/orders/all": OrdersLoadable,
+    "/pos": PosLoadable,
+    // "/inventory/list": InventoryLoadable,
+  };
 
   function handleNavigation(pathname) {
-    // const ComponentToLoad = linkToComponent[pathname];
-    // if (ComponentToLoad) {
-    //   nProgress.start();
-    //   ComponentToLoad.preload().then(() => {
-    //     nProgress.done();
-    //     navigate(pathname);
-    //   });
-    // }
+    const ComponentToLoad = linkToComponent[pathname];
+    if (ComponentToLoad) {
+      nProgress.start();
+      ComponentToLoad.preload().then(() => {
+        nProgress.done();
+        navigate(pathname);
+      });
+    }
   }
 
   return (
