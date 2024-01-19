@@ -10,10 +10,10 @@ const Loading = () => null;
 function Sidebar({ isSidebarOpen }) {
   const navigate = useNavigate();
 
-  // const OrdersLoadable = Loadable({
-  //   loader: () => import("../../pages/Orders/Orders"),
-  //   loading: Loading,
-  // });
+  const OrdersLoadable = Loadable({
+    loader: () => import("../../pages/Orders/Orders"),
+    loading: Loading,
+  });
 
   // const InventoryLoadable = Loadable({
   //   loader: () => import("../../pages/Inventory/Inventory"),
@@ -26,7 +26,7 @@ function Sidebar({ isSidebarOpen }) {
   });
 
   const linkToComponent = {
-    // "/orders/all": OrdersLoadable,
+    "/orders/all": OrdersLoadable,
     "/pos": PosLoadable,
     // "/inventory/list": InventoryLoadable,
   };
