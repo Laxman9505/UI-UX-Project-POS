@@ -4,12 +4,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Billing from "../components/Billing/Billing";
 import POSMenu from "../components/POSMenu/POSMenu";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 function Pos() {
   return (
     <>
-      <div className="container-fluid page-body-wrapper1">
-        <div className=" main_panel_inner">
+      <div className="container-fluid page-body-wrapper">
+        <Sidebar />
+        <div className="main-panel dashboard">
           <div className="content-wrapper">
             <div className="content">
               <div className="row  d-flex justify-content-center">

@@ -34,11 +34,12 @@ function POSMenu({}) {
   }
   return (
     <>
-      <div className="col-md-8 col-xxl-9">
+      <div className="col-md-8 col-xxl-8">
         <div className="menu_right">
           <div className="right_top mb-4">
-            <div className="card">
+            <div className="card" style={{ background: "#f1f7fc" }}>
               <div className="card-body">
+                <h5 className="text-theme">Featured Products</h5>
                 <div className="tab-content mt-3" id="v-pills-tabContent">
                   <div
                     className="tab-pane fade show active"
@@ -78,7 +79,7 @@ function POSMenu({}) {
                                   allProducts?.map((product, i) => {
                                     return (
                                       <div
-                                        className="col-lg-4 col-6 col-sm-4 col-xxl-3"
+                                        className="col-lg-4 col-6 col-sm-4 col-xxl-4"
                                         key={i}
                                       >
                                         <div className="border-gray p-15 mb-4 bg-white text-center">
@@ -101,7 +102,7 @@ function POSMenu({}) {
                                               <h6 className="mb-0 fw-bold">
                                                 {product.ItemName}
                                               </h6>{" "}
-                                              <span className="d-block text-danger fw-bold">
+                                              <span className="d-block fw-bold">
                                                 {"Rs "}
                                                 {product.UnitPrice}
                                               </span>
@@ -121,10 +122,13 @@ function POSMenu({}) {
 
                                               // addToCartHandler(product);
                                             }}
-                                            className="btn btn-raised shadow my-button w-xs  me-2 homecart homelogin"
+                                            style={{
+                                              border: "1px solid #FF6464",
+                                              color: "#FF6464",
+                                            }}
+                                            className="btn btn-raised shadow my-button w-xs   homelogin"
                                           >
                                             {" "}
-                                            <i className="fas fa-shopping-cart me-2" />
                                             Add
                                           </a>
                                         </div>

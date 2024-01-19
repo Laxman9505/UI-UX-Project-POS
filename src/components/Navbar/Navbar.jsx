@@ -72,7 +72,7 @@ function Navbar() {
       <div className="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a
           className="navbar-brand brand-logo"
-          // onClick={() => handleNavigation("/")}
+          onClick={() => handleNavigation("/")}
         >
           <img src={"/assets/images/splash.png"} alt="logo" />
         </a>

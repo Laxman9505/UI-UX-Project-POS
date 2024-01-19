@@ -781,8 +781,10 @@ a#UserDropdown {
   justify-content: center;
 }
 
-.sidebar a.nav-link.active i {
-  background: var(--secondary-color) !important;
+.sidebar a.nav-link.active i,
+.sidebar a.nav-link.active .menu-title {
+  color: #0ab39c !important;
+  font-weight: bold;
 }
 
 .sidebar > .nav .nav-item .nav-link i.menu-arrow {
@@ -1071,10 +1073,12 @@ a#UserDropdown {
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
   background-color: var(--secondary-color);
 }
-
+.recentstores::-webkit-scrollbar {
+  width: 0px !important;
+}
 ::-webkit-scrollbar-thumb {
   background: var(--theme-color);
   border-radius: 5px;

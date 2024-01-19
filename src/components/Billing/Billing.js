@@ -3,7 +3,6 @@
 import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Tooltip } from "antd";
 import React, { useEffect, useState } from "react";
-import { Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 function Billing({}) {
@@ -71,7 +70,7 @@ function Billing({}) {
 
   return (
     <>
-      <div className="col-md-4 col-xxl-3 ">
+      <div className="col-md-4 col-xxl-4 ">
         <div className="card">
           <div className="card-body">
             <div className="mybtn mb-3 postop">
@@ -84,6 +83,7 @@ function Billing({}) {
                     }}
                     placeholder="Customer Name"
                     className="form-control textbox"
+                    style={{ height: "44px" }}
                   />
                 </div>
                 {customerNameError && (
@@ -97,6 +97,7 @@ function Billing({}) {
                     }}
                     placeholder="Customer Address"
                     className="form-control textbox"
+                    style={{ height: "44px" }}
                   />
                 </div>
                 {customerAddressError && (
@@ -104,15 +105,15 @@ function Billing({}) {
                 )}
               </div>
             </div>
-            <div className="total-price border-0 d-flex align-items-start justify-content-between">
+            {/* <div className="total-price border-0 d-flex align-items-start justify-content-between">
               <span className="text-dark-white fw-700">Items subtotal:</span>
               <span className="text-dark-white fw-700">
                 {"Rs "}
                 {itemsSubTotal}
               </span>
-            </div>
+            </div> */}
 
-            <div className="textbox">
+            {/* <div className="textbox">
               <textarea
                 className="form-control"
                 value={orderDescription ? orderDescription : ""}
@@ -121,8 +122,8 @@ function Billing({}) {
                 rows={1}
                 placeholder="Order Description"
               />
-            </div>
-            <div className="row mt-2 g-1">
+            </div> */}
+            {/* <div className="row mt-2 g-1">
               <div className="col-md-12">
                 <Button
                   className="w-100"
@@ -143,21 +144,16 @@ function Billing({}) {
                   Place An Order
                 </Button>
               </div>
-            </div>
+            </div> */}
 
             <div className="d-flex align-items-center justify-content-between mt-3">
-              {false ? (
-                <Badge style={{ fontSize: "13px" }} bg="warning" text="dark">
-                  {/* {state?.orderNumber} */}
-                </Badge>
-              ) : (
-                <h6
-                  className="offcanvas-title fw-bold"
-                  id="placeorderCanvasLabel"
-                >
-                  Items in your Cart
-                </h6>
-              )}
+              <h6
+                className="offcanvas-title fw-bold"
+                id="placeorderCanvasLabel"
+                style={{ fontWeight: "bolder" }}
+              >
+                Items in your Cart
+              </h6>
             </div>
             <div className="">
               <div className="details_inner">

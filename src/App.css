@@ -1,8 +1,5 @@
 /** @format */
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900|Cabin:400,700|Droid+Serif:400,700|Playball");
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 :root {
   --theme-color: #00205b;
   --secondary-color: #20577a;
@@ -15,7 +12,7 @@
   --white-light: #f6fafd;
   --light-blue: #2474a73b;
   --light-red: #eaf8f5;
-  --body-font: "Mulish", sans-serif;
+  --body-font: "Poppins", sans-serif;
   --vz-success: #0ab39c;
   --vz-gray-300: #e9ebec;
   --vz-blue: #3577f1;
@@ -954,8 +951,7 @@ span.text-muted {
 
 .border-gray {
   border: none;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .recentstores a {
