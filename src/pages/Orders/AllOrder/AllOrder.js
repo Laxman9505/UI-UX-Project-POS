@@ -1,6 +1,11 @@
 /** @format */
 
-import { DeleteOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  MoneyCollectOutlined,
+  QrcodeOutlined,
+  ScanOutlined,
+} from "@ant-design/icons";
 import { Button, Drawer, Empty, Modal, Pagination, Tooltip } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +20,11 @@ const AllOrder = ({}) => {
   const [isViewOrderOpen, setIsViewOrderOpen] = useState(false);
   const [isPayOrderOpen, setIsPayOrderOpen] = useState(false);
   const [activeOrder, setActiveOrder] = useState("");
+  const [activePaymentMethod, setActivePaymentMethod] = useState({
+    name: "Fonepay",
+    id: "1",
+    icon: <QrcodeOutlined style={{ fontSize: "40px" }} />,
+  });
   useEffect(() => {
     dispatch({
       type: "GET_ALL_ORDERS_REQUEST",
@@ -41,14 +51,17 @@ const AllOrder = ({}) => {
     {
       name: "Fonepay",
       id: "1",
+      icon: <QrcodeOutlined style={{ fontSize: "40px" }} />,
     },
     {
       name: "Esewa",
       id: "2",
+      icon: <ScanOutlined style={{ fontSize: "40px" }} />,
     },
     {
       name: "Cash",
       id: "3",
+      icon: <MoneyCollectOutlined style={{ fontSize: "40px" }} />,
     },
   ];
 
@@ -244,16 +257,73 @@ const AllOrder = ({}) => {
                 return (
                   <a
                     key={paymentMethod.id}
-                    onClick={() => {}}
-                    className={`btn btn-primary all_btn ${
-                      paymentMethod.id == "1" ? "active" : "btn_red"
+                    onClick={() => {
+                      setActivePaymentMethod(paymentMethod);
+                    }}
+                    className={`d-flex flex-column btn btn-primary all_btn ${
+                      paymentMethod.id == activePaymentMethod.id
+                        ? "active"
+                        : "btn_red"
                     } rounded-3`}
                     aria-current="page"
                   >
+                    {paymentMethod.icon}
                     <span>{paymentMethod.name}</span>
                   </a>
                 );
               })}
+            </div>
+            <div className="card bg-theme mt-3 ">
+              <div className="card-body">
+                <h6 className="text-white">{activePaymentMethod?.name} </h6>
+
+                <div className="col-md-12">
+                  <div className="form-group">
+                    <label className="control-label text-white">
+                      Paid Amount
+                    </label>
+                    <input
+                      type="number"
+                      className="form-control"
+                      value={activeOrder.TotalAmount}
+                      placeholder="eg.$10"
+                      spellCheck="false"
+                      data-ms-editor="true"
+                    />
+                  </div>
+                </div>
+
+                <div className="row d-flex align-items-center">
+                  <div className="col-md-12">
+                    <div className="d-flex align-items-center justify-content-between fw-bold">
+                      <label className="control-label text-white">
+                        Total Payable Amount
+                      </label>
+                      <label className="control-label text-white">
+                        {"Rs" + activeOrder.TotalAmount}
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="col-md-12">
+                    <div className="d-flex align-items-center justify-content-center mt-3 gap-3">
+                      <Button
+                        style={{
+                          background: "#FFDF54",
+                          color: "black",
+                          borderColor: "#FFDF54",
+                        }}
+                        loading={isLoading}
+                        className=" w-50 "
+                        type="danger"
+                        onClick={() => {}}
+                      >
+                        Pay Now
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
