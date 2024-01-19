@@ -441,10 +441,7 @@ const AllOrder = ({}) => {
                           <Button
                             style={{ background: "#E10404", color: "#fff" }}
                             className="btn text-white btn-sm  border-0 w-100 me-2"
-                            onClick={() => {
-                              setActiveOrder(item);
-                              setIsViewOrderOpen(true);
-                            }}
+                            onClick={() => {}}
                           >
                             Reject Order
                           </Button>
