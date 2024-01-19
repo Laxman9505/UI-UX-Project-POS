@@ -105,13 +105,6 @@ function Billing({}) {
                 )}
               </div>
             </div>
-            {/* <div className="total-price border-0 d-flex align-items-start justify-content-between">
-              <span className="text-dark-white fw-700">Items subtotal:</span>
-              <span className="text-dark-white fw-700">
-                {"Rs "}
-                {itemsSubTotal}
-              </span>
-            </div> */}
 
             {/* <div className="textbox">
               <textarea
@@ -122,28 +115,6 @@ function Billing({}) {
                 rows={1}
                 placeholder="Order Description"
               />
-            </div> */}
-            {/* <div className="row mt-2 g-1">
-              <div className="col-md-12">
-                <Button
-                  className="w-100"
-                  loading={placeOrderLoading}
-                  data-bs-toggle="offcanvas"
-                  href=""
-                  role="button"
-                  style={{
-                    background: "#00205A",
-                    color: "white",
-                    borderRadius: "5px",
-                  }}
-                  disabled={cartProducts?.length == 0}
-                  onClick={() => {
-                    placeOrderHandler();
-                  }}
-                >
-                  Place An Order
-                </Button>
-              </div>
             </div> */}
 
             <div className="d-flex align-items-center justify-content-between mt-3">
@@ -186,32 +157,76 @@ function Billing({}) {
                                     {product.ItemName}
                                   </h6>
 
-                                  <div className="col-md-2 mt-1">
-                                    <div className="quantity d-flex align-items-center">
-                                      <i
-                                        className="fa fa-minus"
-                                        onClick={() => {
-                                          dispatch({
-                                            type: "SUBTRACT_QUANTITY_ITEM",
-                                            payload: product,
-                                          });
+                                  <div className="col-md-2 mt-3">
+                                    <div className="d-flex gap-2">
+                                      <Button
+                                        style={{
+                                          background: "#1b9aa5",
+                                          color: "white",
+                                          width: "20px",
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "center",
                                         }}
-                                      />
-                                      <span className="qty">
-                                        {product.Quantity}
-                                      </span>
-                                      <i
-                                        className="fa fa-plus"
-                                        onClick={() => {
-                                          if (true) {
+                                      >
+                                        <i
+                                          className="fa fa-minus"
+                                          onClick={() => {
                                             dispatch({
-                                              type: "ADD_QUANTITY_ITEM",
+                                              type: "SUBTRACT_QUANTITY_ITEM",
                                               payload: product,
                                             });
-                                          } else {
-                                          }
+                                          }}
+                                        />
+                                      </Button>
+                                      <Button
+                                        style={{
+                                          background: "#1b9aa5",
+                                          color: "white",
+                                          width: "20px",
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "center",
                                         }}
-                                      />
+                                      >
+                                        {product.Quantity}
+                                      </Button>
+                                      {/* <div
+                                        className="d-flex justify-content-center align-items-center"
+                                        style={{
+                                          background: "#1b9aa5",
+                                          color: "white",
+                                          padding: "1px",
+
+                                          width: "30px",
+                                          borderRadius: "6px",
+                                        }}
+                                      >
+                                        {" "}
+                                      </div> */}
+                                      <Button
+                                        style={{
+                                          background: "#1b9aa5",
+                                          color: "white",
+                                          width: "20px",
+                                          display: "flex",
+                                          alignItems: "center",
+                                          justifyContent: "center",
+                                        }}
+                                      >
+                                        <i
+                                          className="fa fa-plus"
+                                          onClick={() => {
+                                            if (true) {
+                                              dispatch({
+                                                type: "ADD_QUANTITY_ITEM",
+                                                payload: product,
+                                              });
+                                            } else {
+                                            }
+                                          }}
+                                        />
+                                      </Button>
                                     </div>
                                   </div>
                                 </div>
@@ -226,12 +241,18 @@ function Billing({}) {
                                 </div>
                               </div>
 
-                              <div
-                                className="textbox d-flex align-items-center justify-content-end"
-                                style={{ marginTop: "-1rem" }}
-                              >
+                              <div className="textbox d-flex align-items-center justify-content-end mt-2">
+                                <input
+                                  placeholder="Please , Just a bit spicy"
+                                  className="form-control textbox"
+                                />
                                 <Tooltip title="Delete">
                                   <Button
+                                    style={{
+                                      background: "#FCCCD9",
+                                      color: "black",
+                                      borderColor: "#FCCCD9",
+                                    }}
                                     onClick={() => {
                                       dispatch({
                                         type: "REMOVE_ITEM_CART",
@@ -253,6 +274,48 @@ function Billing({}) {
                       </div>
                     );
                   })}
+              </div>
+            </div>
+            <div className="total-price border-0 d-flex align-items-start justify-content-between">
+              <span className="text-dark-white fw-700">Discount:</span>
+              <span className="text-dark-white fw-700">
+                {"Rs "}
+                {0}
+              </span>
+            </div>
+            <div className="total-price border-0 d-flex align-items-start justify-content-between">
+              <span className="text-dark-white fw-700">Items subtotal:</span>
+              <span className="text-dark-white fw-700">
+                {"Rs "}
+                {itemsSubTotal}
+              </span>
+            </div>
+
+            <div className="row mt-2 g-1">
+              <div className="col-md-12">
+                <Button
+                  className="w-100"
+                  loading={placeOrderLoading}
+                  data-bs-toggle="offcanvas"
+                  href=""
+                  role="button"
+                  style={{
+                    background: "#1b9aa5",
+                    color: "white",
+                    borderRadius: "5px",
+                    height: "40px",
+                    alignItems: "center",
+                    display: "flex",
+                    justifyContent: "center",
+                    borderColor: "#1b9aa5",
+                  }}
+                  disabled={cartProducts?.length == 0}
+                  onClick={() => {
+                    placeOrderHandler();
+                  }}
+                >
+                  Checkout
+                </Button>
               </div>
             </div>
           </div>
