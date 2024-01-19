@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import AllOrder from "./AllOrder/AllOrder";
 import ViewOrder from "./ViewOrder";
 
@@ -10,7 +10,8 @@ const Orders = () => {
   const [viewOrderModal, setViewOrderModal] = useState(false);
 
   return (
-    <div className="container-fluid page-body-wrapper1">
+    <div className="container-fluid page-body-wrapper">
+      <Sidebar />
       <Modal
         size="xl"
         show={viewOrderModal}
@@ -26,36 +27,15 @@ const Orders = () => {
 
       {/* </Spin> */}
 
-      <div className=" main_panel_inner">
+      <div className="main-panel dashboard">
         <div className="content-wrapper">
           <div className="content">
             {/* main Breadcrumb Area */}
             <div className="row  ">
               <div className="col-md-8 grid-margin stretch-card">
-                <div className="breadcrumb_top ">
-                  <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb breadcrumb-custom">
-                      <Link to="/" className="breadcrumb-item fw-bold">
-                        Home
-                      </Link>
-                      <li
-                        className="breadcrumb-item active fw-bold"
-                        aria-current="page"
-                      >
-                        <span>Order</span>
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
+                <div className="breadcrumb_top "></div>
               </div>
-              <div className="col-md-4 text-end">
-                <Link
-                  to="/pos"
-                  className="btn btn-success btn-sm bg-theme border-0"
-                >
-                  View Menu
-                </Link>
-              </div>
+              <div className="col-md-4 text-end"></div>
             </div>
             {/* order tabs */}
             <div className="menu_inner myorders">
@@ -64,7 +44,10 @@ const Orders = () => {
                   <div className="menu_right">
                     <div className="right_top mb-4">
                       <div className="card mt-2">
-                        <div className="card-body">
+                        <div
+                          className="card-body"
+                          style={{ background: "#f1f7fc" }}
+                        >
                           <div className="tab-content" id="v-pills-tabContent">
                             <AllOrder />
                           </div>

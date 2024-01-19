@@ -2793,3 +2793,6 @@ footer {
   border-color: #f1f7fc !important;
   height: 44px !important;
 }
+.ant-drawer-body {
+  overflow: hidden;
+}
