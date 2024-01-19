@@ -2,7 +2,9 @@
 
 import { LogoutOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
+import nProgress from "nprogress";
 import React, { useEffect, useState } from "react";
+import Loadable from "react-loadable";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
@@ -13,6 +15,25 @@ function Navbar() {
   const dispatch = useDispatch();
   const { userDetails } = useSelector((state) => state.authenticationReducer);
 
+  const Dashboard = Loadable({
+    loader: () => import("../../pages/Home"),
+    loading: () => null,
+  });
+
+  const linkToComponent = {
+    "/": Dashboard,
+  };
+
+  function handleNavigation(pathname, state = {}) {
+    const ComponentToLoad = linkToComponent[pathname];
+    if (ComponentToLoad) {
+      nProgress.start();
+      ComponentToLoad.preload().then(() => {
+        nProgress.done();
+        navigate(pathname, { state: state });
+      });
+    }
+  }
   useEffect(() => {
     setIsSidebarOpen(false);
   }, [window.location.pathname]);
@@ -28,7 +49,7 @@ function Navbar() {
         title={
           <a
             className="navbar-brand brand-logo"
-            // onClick={() => handleNavigation("/")}
+            onClick={() => handleNavigation("/")}
           >
             <img
               style={{ width: "60%" }}
