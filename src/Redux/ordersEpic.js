@@ -56,7 +56,7 @@ export const changeOrderStatusEpic = (action$) =>
       from(API.post(`/order/changeOrderStatus`, action.payload)).pipe(
         mergeMap((response) => {
           return of({
-            type: "CHANGE_ORDER_STATUS_SUCESS",
+            type: "CHANGE_ORDER_STATUS_SUCCESS",
             payload: response.data,
           });
         }),

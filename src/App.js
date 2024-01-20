@@ -24,6 +24,8 @@ function App() {
     import("./pages/PageNotFound/PageNotFound")
   );
   const Login = React.lazy(() => import("./pages/Login"));
+  const Inventory = React.lazy(() => import("./pages/Inventory/Inventory"));
+
   const Register = React.lazy(() => import("./pages/Register"));
   const Home = React.lazy(() => import("./pages/Home"));
   const Pos = React.lazy(() => import("./pages/Pos"));
@@ -43,6 +45,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/pos" element={<Pos />} />
                 <Route path="/orders/*" element={<Orders />} />
+                <Route path="/inventory/*" element={<Inventory />} />
 
                 <Route path="/404" element={<PageNotFound />} />
               </Routes>

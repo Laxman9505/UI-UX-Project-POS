@@ -85,7 +85,7 @@ export default function (state = initialState, action) {
         isChangeOrderSuccess: false,
       };
     case "CHANGE_ORDER_STATUS_SUCCESS":
-      openNotificationWithIcon("success", payload?.msg);
+      openNotificationWithIcon("success", payload?.message);
 
       return {
         ...state,

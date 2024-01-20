@@ -15,10 +15,10 @@ function Sidebar({ isSidebarOpen }) {
     loading: Loading,
   });
 
-  // const InventoryLoadable = Loadable({
-  //   loader: () => import("../../pages/Inventory/Inventory"),
-  //   loading: Loading,
-  // });
+  const InventoryLoadable = Loadable({
+    loader: () => import("../../pages/Inventory/Inventory"),
+    loading: Loading,
+  });
 
   const PosLoadable = Loadable({
     loader: () => import("../../pages/Pos"),
@@ -28,7 +28,7 @@ function Sidebar({ isSidebarOpen }) {
   const linkToComponent = {
     "/orders/all": OrdersLoadable,
     "/pos": PosLoadable,
-    // "/inventory/list": InventoryLoadable,
+    "/inventory/list": InventoryLoadable,
   };
 
   function handleNavigation(pathname) {
