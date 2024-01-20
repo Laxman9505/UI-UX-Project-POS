@@ -10,15 +10,20 @@ import { Button, Drawer, Empty, Modal, Pagination, Tooltip } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CardSkeleton from "../../../components/CardSkeleton/CardSkeleton";
+import PaymentReceipt from "../PaymentReceipt";
 import ViewOrder from "../ViewOrder";
 
 const AllOrder = ({}) => {
   const dispatch = useDispatch();
-  const { isLoading, allOrdersList } = useSelector(
-    (state) => state.ordersReducer
-  );
+  const {
+    isLoading,
+    allOrdersList,
+    changeOrderStatusLoading,
+    isChangeOrderSuccess,
+  } = useSelector((state) => state.ordersReducer);
   const [isViewOrderOpen, setIsViewOrderOpen] = useState(false);
   const [isPayOrderOpen, setIsPayOrderOpen] = useState(false);
+  const [isReceiptOpen, setIsReceiptOpen] = useState(false);
   const [activeOrder, setActiveOrder] = useState("");
   const [activePaymentMethod, setActivePaymentMethod] = useState({
     name: "Fonepay",
@@ -34,6 +39,20 @@ const AllOrder = ({}) => {
       },
     });
   }, []);
+
+  useEffect(() => {
+    if (isChangeOrderSuccess) {
+      dispatch({
+        type: "GET_ALL_ORDERS_REQUEST",
+        payload: {
+          Page: 1,
+          PageSize: 10,
+        },
+      });
+      setIsPayOrderOpen(false);
+      setIsReceiptOpen(true);
+    }
+  }, [isChangeOrderSuccess]);
   function onShowSizeChange(current, pageSize) {
     window.scrollTo(0, 0);
     dispatch({
@@ -77,6 +96,14 @@ const AllOrder = ({}) => {
       >
         <ViewOrder order={activeOrder} />
       </Modal>
+      <Drawer
+        open={isReceiptOpen}
+        title="Payment Receipt"
+        width={"30vw"}
+        onClose={() => setIsReceiptOpen(false)}
+      >
+        <PaymentReceipt activeOrder={activeOrder} />
+      </Drawer>
       <Drawer
         open={isPayOrderOpen}
         title="Payment"
@@ -313,10 +340,17 @@ const AllOrder = ({}) => {
                           color: "black",
                           borderColor: "#FFDF54",
                         }}
-                        loading={isLoading}
+                        loading={changeOrderStatusLoading}
                         className=" w-50 "
                         type="danger"
-                        onClick={() => {}}
+                        onClick={() => {
+                          dispatch({
+                            type: "CHANGE_ORDER_STATUS_REQUEST",
+                            payload: {
+                              OrderId: activeOrder._id,
+                            },
+                          });
+                        }}
                       >
                         Pay Now
                       </Button>

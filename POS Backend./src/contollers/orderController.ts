@@ -23,7 +23,7 @@ export async function placeOrder(req: Request, res: Response) {
     await newOrder.save();
     res
       .status(201)
-      .json({ msg: "Order m been placed successfully !", order: newOrder });
+      .json({ msg: "Order has been placed successfully !", order: newOrder });
   } catch (error) {
     console.log("error", error);
     res.status(400).json({ message: "Something Went Wrong !" });
@@ -35,10 +35,23 @@ export async function getAllOrders(req: Request, res: Response) {
     const page: number = parseInt(req.query.page as string) || 1;
     const perPage: number = parseInt(req.query.perPage as string) || 10;
     const PaginationResult = await paginate(orderModel, {}, page, perPage);
-
-    console.log("pagination result", PaginationResult);
     res.status(200).json(PaginationResult);
   } catch (error) {
     res.status(200).json({ message: "Something Went Wrong" });
+  }
+}
+
+export async function changeOrderStatus(req: Request, res: Response) {
+  try {
+    const { OrderId } = req.body;
+    const updatedDocument = await orderModel.findByIdAndUpdate(
+      OrderId,
+      { $set: { OrderStatus: "Completed" } },
+      { new: true } // This option returns the updated document
+    );
+
+    res.status(200).json({ message: "Order has been completed !" });
+  } catch (error) {
+    res.status(400).json({ message: "Something Went Wrong" });
   }
 }

@@ -49,3 +49,23 @@ export const placeOrderEpic = (action$) =>
       )
     )
   );
+export const changeOrderStatusEpic = (action$) =>
+  action$.pipe(
+    ofType("CHANGE_ORDER_STATUS_REQUEST"),
+    mergeMap((action) =>
+      from(API.post(`/order/changeOrderStatus`, action.payload)).pipe(
+        mergeMap((response) => {
+          return of({
+            type: "CHANGE_ORDER_STATUS_SUCESS",
+            payload: response.data,
+          });
+        }),
+        catchError((error) =>
+          of({
+            type: "CHANGE_ORDER_STATUS_FAILURE",
+            payload: error?.response?.data?.message?.[0]?.message,
+          })
+        )
+      )
+    )
+  );

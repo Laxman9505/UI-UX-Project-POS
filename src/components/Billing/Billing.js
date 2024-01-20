@@ -290,7 +290,6 @@ function Billing({}) {
                 {itemsSubTotal}
               </span>
             </div>
-
             <div className="row mt-2 g-1">
               <div className="col-md-12">
                 <Button

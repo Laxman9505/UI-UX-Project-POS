@@ -78,6 +78,28 @@ export default function (state = initialState, action) {
         placeOrderLoading: false,
         isPlaceOrderSuccess: false,
       };
+    case "CHANGE_ORDER_STATUS_REQUEST":
+      return {
+        ...state,
+        changeOrderStatusLoading: true,
+        isChangeOrderSuccess: false,
+      };
+    case "CHANGE_ORDER_STATUS_SUCCESS":
+      openNotificationWithIcon("success", payload?.msg);
+
+      return {
+        ...state,
+        changeOrderStatusLoading: false,
+        isChangeOrderSuccess: true,
+      };
+    case "CHANGE_ORDER_STATUS_FAILURE":
+      openNotificationWithIcon("error", "Something Went Wrong");
+
+      return {
+        ...state,
+        changeOrderStatusLoading: false,
+        isChangeOrderSuccess: false,
+      };
     default:
       return state;
   }

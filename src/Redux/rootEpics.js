@@ -10,7 +10,11 @@ import {
   registerOnBoardUserEpic,
   sendOTPtoMail,
 } from "./myEpics";
-import { getAllOrdersEpic, placeOrderEpic } from "./ordersEpic";
+import {
+  changeOrderStatusEpic,
+  getAllOrdersEpic,
+  placeOrderEpic,
+} from "./ordersEpic";
 
 export const rootEpic = combineEpics(
   editProduct,
@@ -21,5 +25,6 @@ export const rootEpic = combineEpics(
   registerOnBoardUserEpic,
   getDashboardDataEpic,
   placeOrderEpic,
-  sendOTPtoMail
+  sendOTPtoMail,
+  changeOrderStatusEpic
 );
